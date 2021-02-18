@@ -1,72 +1,45 @@
 <?php
 
+//      array_callback      //
 
-$arr1 = ['my','text'];
+//      array_filter        //
 
-$arr2 = [
-    2=> 'our',
-    3=>'some'];
 
-// слияние с заменой значений по индексам (приоритет слева)
-$sum = $arr1 + $arr2;
+$arr = [0,1,2,33,'','text'];
+$data = array_filter($arr);
 
-// без замены значений по индексам (правый массив продолжает левый)
-$sum = array_merge($arr1, $arr2);
+/*
+$arr = [0,1,2,33,'','text'];
+$data = array_filter($arr,function($element){
+    return $element > 1;
+});
+*/
+
+//      array_map       //
+
+/*
+$number = 4;
+$arr = [0,1,2,33,'','3text2'];
+$data = array_map(function($el) use ($number) {
+    return $el + $number;
+},$arr);
+*/
+
+/*
+$arr = ['тест','text'];
+$data = array_map('mb_strtoupper',$arr);
+*/
+
+//      array_walk      //
+
+/*
+$arr = [0,1,2,33,'','3text2'];
+$data = array_walk($arr,function($el){
+    echo $el;
+});
+*/
 
 ?>
-
 <pre>
-<?php print_r($sum) ?>
-</pre>
-
-<?php
-
-/* ==========  сравнение массивов ===========  */
-
-$a1 = [
-    0 => 1,
-    1 => 2,
-];
-
-$a2 = [
-    0 => 1,
-    1 => '2',
-];
-
-if ( $a1 === $a2) {
-    echo 'Массивы равны <br>';
-} else {
-    echo 'Массивы не равны <br>';
-}
-
-// проверка существования массивов 
-
-if (is_array($a1)) {
-    echo 'это массив <br>';
-} else {
-    echo 'это не массив <br.';
-}
-
-// поиск значения в массиве (cтрогая проверка)
-// заменить true и будет нестрогая 
-
-if (in_array('1', $a1, true)) {
-    echo 'Переменная существует <br>';
-} else {
-    echo 'Переменная не существует <br>';
-}
-
-// поиск ключа
-
-array_key_exists(0,$a1);
-
-// удаление массива или переменной
-
-unset($a[1]);
-
-
-
-
-
-
-
+<?php var_dump($data); ?>
+<pre>
